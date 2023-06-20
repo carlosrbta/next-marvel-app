@@ -1,7 +1,7 @@
 import "./globals.css";
 import React, { useState } from "react";
 import { Inter } from "next/font/google";
-import StyledComponentsRegistry from "~/lib/registry";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

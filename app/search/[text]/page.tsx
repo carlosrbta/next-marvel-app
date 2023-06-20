@@ -1,13 +1,12 @@
 "use client";
 
 import Characters from "~/components/Characters";
-import { Navbar } from "~/components/Navbar";
+import Layout from "~/components/Layout";
 
 export default function Page({ params }: { params: { text: string } }) {
   return (
-    <main className="w-full min-h-screen">
-      <Navbar />
+    <Layout>
       <Characters text={params.text} />
-    </main>
+    </Layout>
   );
 }

@@ -1,4 +1,1 @@
-import { getBaseUrl } from './getBaseUrl';
-
-export const fetcher = (url: any) =>
-  fetch(`${getBaseUrl()}${url}`).then((res) => res.json());
+export const fetcher = (url: any) => fetch(url).then((res) => res.json());
