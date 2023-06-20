@@ -7,8 +7,12 @@ import {
   Input,
   useColorModeValue,
   Box,
+  InputGroup,
+  InputRightElement,
+  IconButton,
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
+import { SearchIcon } from "@chakra-ui/icons";
 
 export default function Hero() {
   const [search, setSearch] = useState("");
@@ -36,16 +40,28 @@ export default function Hero() {
         }}
       >
         <FormControl>
-          <Input
-            size="lg"
-            borderWidth={1}
-            id={"search"}
-            placeholder={"Search by name or part of the hero's name."}
-            value={search}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSearch(e.target.value)
-            }
-          />
+          <InputGroup>
+            <Input
+              size="lg"
+              borderWidth={1}
+              id={"search"}
+              placeholder={"Search by name or part of the hero's name."}
+              value={search}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setSearch(e.target.value)
+              }
+            />
+            <InputRightElement>
+              <IconButton
+                size="lg"
+                icon={<SearchIcon />}
+                aria-label="Search"
+                top={"4px"}
+                right={"4px"}
+                onClick={handleSubmit}
+              />
+            </InputRightElement>
+          </InputGroup>
         </FormControl>
       </Stack>
     </Stack>

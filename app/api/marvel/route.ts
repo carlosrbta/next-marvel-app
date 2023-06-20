@@ -17,6 +17,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const nameStartsWith = searchParams.get("nameStartsWith");
   const name = searchParams.get("name");
+  const id = searchParams.get("id");
 
   const ts = _timestamp();
 
@@ -28,11 +29,22 @@ export async function GET(request: Request) {
   if (nameStartsWith) params.set("nameStartsWith", nameStartsWith);
   if (name) params.set("name", name);
 
-  const res = await fetch(
-    `${process.env.API_URL}/characters?${params.toString()}`
-  );
+  if (id) {
+    const res = await fetch(
+      `${process.env.API_URL}characters/${id}?${params.toString()}`
+    );
 
+    console.log(`${process.env.API_URL}characters/${id}?${params.toString()}`);
+
+    const data = await res.json();
+
+    return NextResponse.json({ ...data?.data?.results[0] });
+  }
+
+  const res = await fetch(
+    `${process.env.API_URL}characters?${params.toString()}`
+  );
   const data = await res.json();
 
-  return NextResponse.json({ ...data.data });
+  return NextResponse.json({ ...data?.data });
 }
