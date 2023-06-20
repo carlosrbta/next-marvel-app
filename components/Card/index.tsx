@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Container, Image, Title } from "./styles";
 
-export const Card = ({ title, thumbnail }) => {
+export const Card = ({ title, thumbnail }: any) => {
   const image = useMemo(() => {
     return `${thumbnail.path}.${thumbnail.extension}`;
   }, [thumbnail]);
